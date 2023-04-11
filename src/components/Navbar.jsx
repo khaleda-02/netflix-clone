@@ -1,19 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from '../context/AuthContext'
+import { Link } from "react-router-dom";
 import { BiSearchAlt } from 'react-icons/bi'
 export const Navbar = () => {
-  const { user, logOut } = UserAuth()
-  const navigate = useNavigate()
-  const logOutHandle = () => {
-    logOut()
-    navigate('/')
-  }
-  console.log(window.scrollY)
-  const x= window.scrollY >= 100 ? ">= 100 " : 'not 100'
-  console.log(x)
   return (
-    <div className="flex justify-between items-center w-full px-5  absolute h-[10vh] text-white z-[100] ">
+    <div className="flex justify-between items-center w-full px-5  absolute h-[10vh] text-white z-[100] py-2 ">
       <Link to="/">
         <h1 className="text-red-600 text-4xl font-bold cursor-pointer">
           NETFLIX
@@ -23,16 +13,12 @@ export const Navbar = () => {
         <Link to="/search">
           <button className='flex items-center justify-between gap-2 text-lg font-bold '> <BiSearchAlt size={25} /></button>
         </Link>
-        <div className="border-red-600 border-2 rounded">
-          <Link to="/login">
-            <button className="capitalize  text-lg font-medium px-3 py-2">
-              sign in
-            </button>
+        <div className="border-red-600 border-2 rounded flex items-center justify-center flex-col mt-6 md:flex-row md:mt-0 ">
+          <Link to="/login" className="capitalize  text-lg font-medium px-3 py-2">
+            sign in
           </Link>
-          <Link to="/signup">
-            <button className="capitalize font-medium text-lg bg-red-600 px-3 py-2 rounded">
-              sign up
-            </button>
+          <Link to="/signup" className="capitalize font-medium text-lg bg-red-600 px-3 py-2 rounded">
+            sign up
           </Link>
         </div>
       </div>
@@ -40,26 +26,3 @@ export const Navbar = () => {
   );
 };
 
-
-// {user ?
-//   (<div className="border-red-600 border-2 rounded">
-//     <Link to="/account">
-//       <button className="capitalize  text-lg font-medium px-3 py-2" >
-//         Account
-//       </button>
-//     </Link>
-//     <button className="capitalize font-medium text-lg bg-red-600 px-3 py-2 rounded rounded-l-none" onClick={logOutHandle}>
-//       Log Out
-//     </button>
-//   </div>) : (<div className="border-red-600 border-2 rounded">
-//     <Link to="/login">
-//       <button className="capitalize  text-lg font-medium px-3 py-2">
-//         sign in
-//       </button>
-//     </Link>
-//     <Link to="/signup">
-//       <button className="capitalize font-medium text-lg bg-red-600 px-3 py-2 rounded">
-//         sign up
-//       </button>
-//     </Link>
-//   </div>)}
